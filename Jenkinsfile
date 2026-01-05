@@ -44,7 +44,11 @@ pipeline {
 
                 sleep 5
 
-                docker exec enterprise-ci curl http://localhost:5000
+                docker exec enterprise-ci python - <<EOF
+                import urllib.request
+                print(urllib.request.urlopen("http://localhost:5000").read().decode())
+                EOF
+
                 """
             }
         }
