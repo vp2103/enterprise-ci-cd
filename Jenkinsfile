@@ -38,8 +38,13 @@ pipeline {
         stage('Deploy (Validation)') {
             steps {
                 sh """
-                  docker rm -f enterprise-ci || true
-                  docker run -d --name enterprise-ci -p 5000:5000 ${IMAGE_NAME}:${IMAGE_TAG}
+                docker rm -f enterprise-ci || true
+
+                  docker run -d \
+                    --name enterprise-ci \
+                    --network host \
+                    varun210300/enterprise-ci-cd:${BUILD_NUMBER}
+
                   sleep 5
                   curl http://localhost:5000
                 """
