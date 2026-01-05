@@ -40,12 +40,11 @@ pipeline {
                 sh """
                 docker rm -f enterprise-ci || true
 
-                docker run -d \ --name enterprise-ci \
-                    -p 5000:5000 \
-                    varun210300/enterprise-ci-cd:${BUILD_NUMBER}
+                docker run -d --name enterprise-ci -p 5000:5000 varun210300/enterprise-ci-cd:${BUILD_NUMBER}
 
-                docker exec enterprise-ci sleep 5
-                curl http://localhost:5000
+                sleep 5
+
+                docker exec enterprise-ci curl http://localhost:5000
                 """
             }
         }
