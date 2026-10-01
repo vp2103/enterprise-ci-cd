@@ -1,6 +1,6 @@
 <div align="center">
 
-# Enterprise CI/CD
+# DualTrack - Enterprise CI/CD
 ### One containerized app, two pipelines: GitHub Actions and Jenkins
 
 A Flask application built, tested, published to Docker Hub and validated automatically on every change, using both GitHub Actions and Jenkins side by side.
